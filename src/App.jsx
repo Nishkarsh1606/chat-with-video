@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Home from './Landing_Page/Home'
 import Error from './Landing_Page/Error'
-import MainApp from './Application/MainApp'
+import MainApp from './Main_Application/MainApp'
 import './App.css'
 import { auth } from '../firebase'
 import { signOut } from 'firebase/auth'
@@ -20,27 +20,29 @@ function App() {
   }
 
   //Show loading while the user is trying to log in and request is being authenticated
-  else if(loading){
-    return(
-      <p>One Sec 🙏</p>
+  else if (loading) {
+    return (
+    <>
+    </>
     )
   }
 
   //Show error if user is unable to login to due to some issues
-  else if(error){
-    return(
+  else if (error) {
+    return (
       <Routes>
-        <Route path='/error' element={<Error/>}/>
+        <Route path='/error' element={<Error />} />
       </Routes>
     )
   }
   //The Landing Page of the app
-    return (
-      <Routes>
-        <Route path='/' element={<Home />} />
-        {/* <Route path='*' element={<Home/>}/> */}
-      </Routes>
-    )
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/error' element={<Error />} />
+      {/* <Route path='*' element={<Home/>}/> */}
+    </Routes>
+  )
 }
 
 export default App
