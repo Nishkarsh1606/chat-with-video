@@ -1,0 +1,26 @@
+.current-user-message{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.current-user-message>p{
+    margin-right: 12px;
+    background-color: #646cff;
+    padding: 12px;
+    border-radius:25px;
+    border-bottom-right-radius: 0;
+}
+
+.friend-message{
+    display: flex;
+    align-items: center;
+}
+
+.friend-message>p{
+    margin-left: 12px;
+    background-color: gray;
+    padding: 12px;
+    border-radius:25px;
+    border-bottom-left-radius: 0;
+}

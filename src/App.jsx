@@ -2,10 +2,9 @@ import { Route, Routes } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Home from './Landing_Page/Home'
 import Error from './Landing_Page/Error'
-import MainApp from './Main_Application/MainApp'
+import Feed from './Main_Application/Feed'
 import './App.css'
 import { auth } from '../firebase'
-import { signOut } from 'firebase/auth'
 
 function App() {
   const [user, loading, error] = useAuthState(auth)
@@ -13,8 +12,8 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path='/dashboard' element={<MainApp />} />
-        <Route path='*' element={<MainApp />} />
+        <Route path='/dashboard' element={<Feed />} />
+        <Route path='*' element={<Feed />} />
       </Routes>
     )
   }

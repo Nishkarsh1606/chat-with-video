@@ -1,6 +1,6 @@
 .Home{
     width: 50%;
-    margin: 10% auto;
+    margin: 10vh auto;
     border:1px solid #646cff; 
     border-radius: 25px;
     padding: 12px;
@@ -32,8 +32,9 @@
 
 .Home>:nth-child(2){  /* Second p tag */
     margin: 0;
-    font-size: 2rem;
-    margin-block-end: 1rem;
+    font-size: 1.5rem;
+    margin-block-start: 0.5rem;
+    margin-block-end: 2rem;
     text-align: center;
     font-weight: 550;
 }
@@ -41,6 +42,8 @@
 .sign-in-email>input{
     width: 150%;
     padding: 6px;
+    width: 100%;
+    margin: 12px
 }
 
 .sign-in-email>button{

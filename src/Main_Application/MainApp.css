@@ -1,0 +1,90 @@
+.MainApp{
+    display: flex;
+}
+
+.LeftSideBar{
+    flex: 0.2;
+    border-right: 0.1px solid whitesmoke;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.leftsidebar-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+
+.leftsidebar-icons{
+    cursor: pointer;
+}
+
+.leftsidebar-search{
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+    margin-bottom: 32px;
+}
+
+.leftsidebar-search>input{
+    width: 90%;
+    height: 2rem;
+    color: grey;
+    font-size: 1rem;
+    outline: none;
+    font-weight: 500;
+}
+
+.leftsidebar-friends{
+    padding: 12px;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.Feed{
+    flex: 0.8;
+    background-color: black;
+}
+
+.feed-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 17px;
+    background-color: #1C1C24;
+}
+
+.ChatSection{
+    margin:auto;
+    margin-top: 12px;
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow-y: scroll;
+    padding: 12px;
+}
+
+.send-chat>form{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.send-chat>form>input{
+    width: 50%;
+    height: 40px;
+    font-size: 18px;
+    outline: none;
+}
+
+.send-chat>form>button{
+    padding: 5px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.sign-out{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
