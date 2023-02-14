@@ -1,6 +1,6 @@
 import { Avatar } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Friend from './components/Friend';
 import './MainApp.css'
 import { useDispatch } from 'react-redux';
@@ -9,16 +9,28 @@ import { auth } from '../../firebase';
 
 function LeftSideBar() {
     //add use effect to filter list of friends to be rendered when the search input changes
-    const dispatch=useDispatch()
     const [searchQuery, setSearchQuery] = useState('')
-    const selectCurrentChannel=()=>{
+    const [welcomeMessage,setWelcomeMessage]=useState('')
+    const getFirstName=auth.currentUser.displayName.split(' ')[0]
+    const profilePictureURL=auth.currentUser.photoURL.toString()
 
-    }
+    useEffect(()=>{
+        setWelcomeMessage(`Welcome ${getFirstName}!`)
+        const timeoutID=setTimeout(() => {
+            setWelcomeMessage('')
+        }, 2000);
+        return ()=>{
+            clearTimeout(timeoutID)
+        }
+    },[])
+
+    console.log(profilePictureURL)
     return (
         <div className='LeftSideBar'>
             <div className="leftsidebar-header">
                 <div>
-                    <Avatar />
+                    <img alt='user profile img' src={profilePictureURL} className='current-user-profile' />
+                    <p>{welcomeMessage}</p>
                 </div>
                 <div className='leftsidebar-icons'>
                     <AddIcon sx={{ borderRadius: '50px', backgroundColor: 'black', fontSize: '30px' }} />
@@ -31,13 +43,13 @@ function LeftSideBar() {
             <div className="leftsidebar-friends">
                 {/* Map all friends */}
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} />
+                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test'/>
                 </div>
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} />
+                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test2'/>
                 </div>
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} />
+                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test3'/>
                 </div>
             </div>
             <div className="sign-out">
