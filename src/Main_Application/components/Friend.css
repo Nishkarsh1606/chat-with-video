@@ -7,6 +7,10 @@
     cursor: pointer;
 }
 
+.Friend-highlighted{
+    background-color: #646cff;
+}
+
 .Friend:hover{
     background-color: rgba(128, 128, 128, 0.502);
 }

@@ -16,6 +16,22 @@
     padding: 12px;
 }
 
+.leftsidebar-header>div{
+    display: flex;
+    align-items: center;
+}
+
+.leftsidebar-header>div>img{
+    border-radius: 100px;
+    width: 40px;
+    object-fit: contain;
+}
+
+.leftsidebar-header>div>p{
+    margin-left: 10px;
+    font-weight: 550;
+}
+
 .leftsidebar-icons{
     cursor: pointer;
 }
