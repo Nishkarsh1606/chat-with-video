@@ -61,6 +61,7 @@
 .Feed{
     flex: 0.8;
     background-color: black;
+    position: relative;
 }
 
 .feed-header{
@@ -85,8 +86,9 @@
 .send-chat{
     background-color: #1C1C24;
     height: 10%;
-    position: relative;
-    bottom: -5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .send-chat>form{ 
