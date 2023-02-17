@@ -8,10 +8,10 @@ import { addDoc, collection, doc, onSnapshot, serverTimestamp, setDoc } from 'fi
 import { auth, db, messagesRef, messagesRefDesc } from '../../firebase';
 
 function Feed() {
-  const user=auth.currentUser
+  const user = auth.currentUser
   const [chatMessage, setChatMessage] = useState('')
   const [messages, setMessages] = useState([])
-  const messagesEndRef=useRef(null)
+  const messagesEndRef = useRef(null)
 
   useEffect(() => {
     onSnapshot(messagesRefDesc, (snapshot) => {
@@ -22,23 +22,25 @@ function Feed() {
         }
       )))
     })
-  },[])
+  }, [])
 
   const handleChatMessage = (e) => {
     e.preventDefault()
-    setChatMessage('')
-    addDoc(collection(db,'users'),{
-      authorName:user.displayName,
-      authoruid: user.uid,
-      message:chatMessage,
-      avatar: '' || user.photoURL,
-      serverTime: serverTimestamp()
-    })
+    if (chatMessage.length > 0) {
+      setChatMessage('')
+      addDoc(collection(db, 'users'), {
+        authorName: user.displayName,
+        authoruid: user.uid,
+        message: chatMessage,
+        avatar: '' || user.photoURL,
+        serverTime: serverTimestamp()
+      })
+    }
   }
 
-  useEffect(()=>{
-    messagesEndRef.current.scrollIntoView({behavior:'smooth'})
-  },[messages])
+  useEffect(() => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   return (
     <div className='MainApp'>
@@ -54,11 +56,11 @@ function Feed() {
         <hr style={{ height: '0.1px', borderWidth: '0.1px' }} />
         <div className="ChatSection">
           {
-            messages.map(({id,data:{authorName,authoruid,message,avatar}})=>(
-              <Message key={id} authorName={authorName} authorID={authoruid} messageBody={message} currentUID={user.uid} profileURL={avatar}/>
-              ))
+            messages.map(({ id, data: { authorName, authoruid, message, avatar } }) => (
+              <Message key={id} authorName={authorName} authorID={authoruid} messageBody={message} currentUID={user.uid} profileURL={avatar} />
+            ))
           }
-          <div ref={messagesEndRef}/>
+          <div ref={messagesEndRef} />
         </div>
         <div className="send-chat">
           <form onSubmit={handleChatMessage}>
