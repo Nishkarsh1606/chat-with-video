@@ -35,14 +35,14 @@ function Home() {
     <div className='Home'>
       <p>Sign Up for Supchat 🔥</p>
       <p>Private, encrypted, unlimited <br /> free chats & video calls</p>
-      <div className="sign-in-email">
+      {/* <div className="sign-in-email">
         <p>Enter Full Email</p>
         <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
         <p>Enter Password</p>
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
         <button onClick={handleSignUpWithEmail}>{`Sign Up (New Users)`}</button>
         <button onClick={handleSignInWithEmail}>Sign In</button>
-      </div>
+      </div> */}
       <div className="sign-in-providers">
         <button onClick={handleSignInWithGoogle}>Sign In With Google <span><img alt="GooglesvgImg" style={{width:'24px', padding:'0px', marginLeft:'6px'}} src={googleSVGURL}/></span></button>
       </div>
