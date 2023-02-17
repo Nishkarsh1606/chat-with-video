@@ -13,7 +13,7 @@ function Friend({nameOfFriend,lastMessage,avatarURL, uid}) {
   }
   if(currentChannel!==uid){
     return (
-      <div className="Friend" onClick={highlightChannel}>
+      <div className="Friend Friend-hover" onClick={highlightChannel}>
         <Avatar/>
         <div className="message-info">
           <p>{nameOfFriend}</p>

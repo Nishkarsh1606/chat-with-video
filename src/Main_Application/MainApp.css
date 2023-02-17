@@ -21,7 +21,7 @@
     align-items: center;
 }
 
-.leftsidebar-header>div>img{
+.profile-picture{
     border-radius: 100px;
     width: 40px;
     object-fit: contain;
@@ -72,11 +72,21 @@
 
 .ChatSection{
     margin:auto;
-    margin-top: 12px;
-    min-height: 80vh;
+    height: 80vh;
     max-height: 80vh;
     overflow-y: scroll;
     padding: 12px;
+}
+
+.ChatSection li{
+    list-style: none;
+}
+
+.send-chat{
+    background-color: #1C1C24;
+    height: 10%;
+    position: relative;
+    bottom: -5px;
 }
 
 .send-chat>form{ 
@@ -89,7 +99,7 @@
 .send-chat>form>input{
     width: 50%;
     height: 40px;
-    font-size: 18px;
+    font-size: 20px;
     outline: none;
 }
 

@@ -24,12 +24,11 @@ function LeftSideBar() {
         }
     },[])
 
-    console.log(profilePictureURL)
     return (
         <div className='LeftSideBar'>
             <div className="leftsidebar-header">
                 <div>
-                    <img alt='user profile img' src={profilePictureURL} className='current-user-profile' />
+                    <img alt='profile' src={profilePictureURL} className='profile-picture' />
                     <p>{welcomeMessage}</p>
                 </div>
                 <div className='leftsidebar-icons'>
@@ -43,13 +42,13 @@ function LeftSideBar() {
             <div className="leftsidebar-friends">
                 {/* Map all friends */}
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test'/>
+                    <Friend nameOfFriend={'Test Friend 1'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test'/>
                 </div>
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test2'/>
+                    <Friend nameOfFriend={'Test Friend 2'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test2'/>
                 </div>
                 <div>
-                    <Friend nameOfFriend={'hello'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test3'/>
+                    <Friend nameOfFriend={'Test Friend 3'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test3'/>
                 </div>
             </div>
             <div className="sign-out">
