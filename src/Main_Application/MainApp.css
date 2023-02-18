@@ -2,17 +2,25 @@
     display: flex;
 }
 
+.items-center-space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex{
+    display: flex;
+}
+
 .LeftSideBar{
     flex: 0.2;
     border-right: 0.1px solid whitesmoke;
     min-height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .leftsidebar-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 12px;
 }
 
@@ -114,5 +122,6 @@
 .sign-out{
     position: absolute;
     bottom: 10px;
+    width: 90%;
     left: 10px;
 }
