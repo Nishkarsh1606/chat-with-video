@@ -39,6 +39,11 @@
     font-weight: 550;
 }
 
+.Home>:nth-child(4){
+    margin-block: 1rem;
+    font-weight: 550;
+}
+
 .sign-in-email>input{
     width: 150%;
     padding: 6px;
@@ -48,10 +53,6 @@
 
 .sign-in-email>button{
     margin-top: 12px;
-}
-
-.sign-in-providers{
-    margin-top: 3rem;
 }
 
 .sign-in-providers>button{

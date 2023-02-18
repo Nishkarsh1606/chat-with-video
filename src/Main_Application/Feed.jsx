@@ -11,6 +11,7 @@ function Feed() {
   const user = auth.currentUser
   const [chatMessage, setChatMessage] = useState('')
   const [messages, setMessages] = useState([])
+  const [docTitle,setDocTitle]=useState(document.title)
   const messagesEndRef = useRef(null)
 
   useEffect(() => {
@@ -23,6 +24,17 @@ function Feed() {
       )))
     })
   }, [])
+
+  useEffect(()=>{
+    document.title='Hola!'
+    const timeOutID=setTimeout(()=>{
+      document.title=docTitle
+    },500) 
+    return ()=>{
+      clearTimeout(timeOutID)
+      document.title=docTitle
+    }
+  },[])
 
   const handleChatMessage = (e) => {
     e.preventDefault()
