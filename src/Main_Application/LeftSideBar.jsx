@@ -1,11 +1,10 @@
-import { Avatar } from '@mui/material'
+import KeyIcon from '@mui/icons-material/Key';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState } from 'react'
 import Friend from './components/Friend';
-import './MainApp.css'
-import { useDispatch } from 'react-redux';
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase';
+import './MainApp.css'
 
 function LeftSideBar() {
     //add use effect to filter list of friends to be rendered when the search input changes
@@ -24,14 +23,28 @@ function LeftSideBar() {
         }
     },[])
 
+    const handleAddFriends=()=>{
+        const friendUID=prompt('Enter friends secret key 👇')
+        alert(friendUID)
+    }
+
+    const displayKey=()=>{
+        alert(`Here's your secret key. Only share this with your friends: ${auth.currentUser.uid}`)
+    }
+
+    const handleSignOut=()=>{
+        // First clear the storage token that says --> first sign in 
+        signOut(auth)
+    }
+
     return (
         <div className='LeftSideBar'>
-            <div className="leftsidebar-header">
+            <div className="leftsidebar-header items-center-space-between">
                 <div>
                     <img alt='profile' src={profilePictureURL} className='profile-picture' />
                     <p>{welcomeMessage}</p>
                 </div>
-                <div className='leftsidebar-icons'>
+                <div className='leftsidebar-icons' onClick={handleAddFriends}>
                     <AddIcon sx={{ borderRadius: '50px', backgroundColor: 'black', fontSize: '30px' }} />
                 </div>
             </div>
@@ -51,8 +64,9 @@ function LeftSideBar() {
                     <Friend nameOfFriend={'Test Friend 3'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test3'/>
                 </div>
             </div>
-            <div className="sign-out">
-                <button onClick={()=>signOut(auth)}>Sign Out</button>
+            <div className="sign-out items-center-space-between">
+                <button onClick={handleSignOut}>Sign Out</button>
+                <div style={{cursor:'pointer'}} onClick={displayKey}><KeyIcon/></div>
             </div>
         </div>
     )
