@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Friend from './components/Friend';
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase';
-import './MainApp.css'
+import '../App.css'
 
 function LeftSideBar() {
     //add use effect to filter list of friends to be rendered when the search input changes
@@ -25,7 +25,6 @@ function LeftSideBar() {
 
     const handleAddFriends=()=>{
         const friendUID=prompt('Enter friends secret key 👇')
-        alert(friendUID)
     }
 
     const displayKey=()=>{
@@ -48,9 +47,9 @@ function LeftSideBar() {
                     <AddIcon sx={{ borderRadius: '50px', backgroundColor: 'black', fontSize: '30px' }} />
                 </div>
             </div>
-            <hr style={{height:'0.1px', borderWidth:'0.1px'}}/>
+            <hr className='hr'/>
             <div className="leftsidebar-search">
-                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={`Find and add friends 🔎`} />
+                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={`Search`} />
             </div>
             <div className="leftsidebar-friends">
                 {/* Map all friends */}

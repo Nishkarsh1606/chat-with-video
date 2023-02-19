@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import LeftSideBar from './LeftSideBar'
 import Message from './components/Message'
-import './MainApp.css'
+import '../App.css'
 import { addDoc, collection, doc, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
 import { auth, db, messagesRef, messagesRefDesc } from '../../firebase';
 
@@ -65,7 +65,7 @@ function Feed() {
             <VideoCallRounded />
           </div>
         </div>
-        <hr style={{ height: '0.1px', borderWidth: '0.1px' }} />
+        <hr className='hr' />
         <div className="ChatSection">
           {
             messages.map(({ id, data: { authorName, authoruid, message, avatar } }) => (
@@ -76,7 +76,7 @@ function Feed() {
         </div>
         <div className="send-chat">
           <form onSubmit={handleChatMessage}>
-            <input type="text" value={chatMessage} onChange={(e) => setChatMessage(e.target.value)} />
+            <input type="text" value={chatMessage} placeholder='Send a sup!' onChange={(e) => setChatMessage(e.target.value)}/>
             <button type='submit'><SendIcon /></button>
           </form>
         </div>

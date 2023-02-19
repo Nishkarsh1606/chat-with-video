@@ -35,13 +35,15 @@ function App() {
     )
   }
   //The Landing Page of the app
-  return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/error' element={<Error />} />
-      {/* <Route path='*' element={<Home/>}/> */}
-    </Routes>
-  )
+  else{
+    return (
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/error' element={<Error />} />
+        {/* <Route path='*' element={<Home/>}/> */}
+      </Routes>
+    )
+  }
 }
 
 export default App
