@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Home from './Landing_Page/Home'
 import Error from './Landing_Page/Error'
-import Feed from './Main_Application/Feed'
+import Feed from './Application/Feed'
 import './App.css'
 import { auth } from '../firebase'
 

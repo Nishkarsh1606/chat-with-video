@@ -2,6 +2,10 @@
     display: flex;
 }
 
+li{
+    list-style: none;
+}
+
 .items-center-space-between {
     display: flex;
     justify-content: space-between;
@@ -92,10 +96,6 @@
     max-height: 80vh;
     overflow-y: scroll;
     padding: 12px;
-}
-
-.ChatSection li {
-    list-style: none;
 }
 
 .send-chat {

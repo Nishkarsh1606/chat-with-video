@@ -6,24 +6,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectChannel } from '../../AppSlice/AppSlice';
 
 
-function Friend({ nameOfFriend, lastMessage, avatarURL, uid }) {
+function Friend({ nameOfFriend, lastMessage, avatarURL, roomID }) {
   const currentChannel = useSelector((state) => state.app.currentChannel)
   const dispatch = useDispatch()
   const highlightChannel = () => {
-    dispatch(selectChannel(uid))
+    dispatch(selectChannel(roomID))
   }
   return (
-    <div>
-      <div className={currentChannel !== uid ? ('Friend Friend-hover') : ('Friend Friend-highlighted')} onClick={highlightChannel}>
+    <div onClick={highlightChannel}>
+      <div className={currentChannel !== roomID ? ('Friend Friend-hover') : ('Friend Friend-highlighted')} onClick={highlightChannel}>
         {
-          avatarURL ? (<Avatar className='profile-avatar'>{nameOfFriend[0]}</Avatar>) : (<img src={avatarURL} className='profile-picture' />)
+          avatarURL!=='' ?(<img src={avatarURL} className='profile-picture' />) : (<Avatar className='profile-avatar'>{nameOfFriend[0]}</Avatar>)
         }
         <div className="message-info">
           <p>{nameOfFriend}</p>
           <p>{lastMessage}</p>
         </div>
       </div>
-      {/* <hr className='Friend-hr'/> */}
     </div>
   )
 }

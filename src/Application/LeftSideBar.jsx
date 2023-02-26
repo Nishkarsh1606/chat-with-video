@@ -1,23 +1,36 @@
-import KeyIcon from '@mui/icons-material/Key';
-import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState } from 'react'
 import Friend from './components/Friend';
 import { signOut } from 'firebase/auth'
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import KeyIcon from '@mui/icons-material/Key';
+import AddIcon from '@mui/icons-material/Add';
 import '../App.css'
 
 function LeftSideBar() {
     //add use effect to filter list of friends to be rendered when the search input changes
     const [searchQuery, setSearchQuery] = useState('')
     const [welcomeMessage,setWelcomeMessage]=useState('')
+    const [friendList,setFriendList]=useState([])
     const getFirstName=auth.currentUser.displayName.split(' ')[0]
     const profilePictureURL=auth.currentUser.photoURL.toString()
+    
+    const friendListRef=collection(db,`/ConnectionsMap/${auth.currentUser.uid}/friends`)
+    const friendListRefDesc=query(friendListRef,orderBy('serverTime','desc'))
 
     useEffect(()=>{
         setWelcomeMessage(`Welcome ${getFirstName}!`)
         const timeoutID=setTimeout(() => {
             setWelcomeMessage('')
         }, 2000);
+        onSnapshot(friendListRefDesc,(snapshot)=>{
+            setFriendList(snapshot.docs.map((doc)=>(
+                {
+                    id: doc.id,
+                    data:doc.data()
+                }
+            )))
+        })
         return ()=>{
             clearTimeout(timeoutID)
         }
@@ -35,6 +48,7 @@ function LeftSideBar() {
         // First clear the storage token that says --> first sign in 
         signOut(auth)
     }
+    console.log(auth.currentUser.uid)
 
     return (
         <div className='LeftSideBar'>
@@ -53,15 +67,13 @@ function LeftSideBar() {
             </div>
             <div className="leftsidebar-friends">
                 {/* Map all friends */}
-                <div>
-                    <Friend nameOfFriend={'Test Friend 1'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test'/>
-                </div>
-                <div>
-                    <Friend nameOfFriend={'Test Friend 2'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test2'/>
-                </div>
-                <div>
-                    <Friend nameOfFriend={'Test Friend 3'} lastMessage={'Hello World'} avatarURL={'hel'} uid='test3'/>
-                </div>
+                {
+                    friendList.map(({id,data:{friendName, avatarURL, roomID}})=>(
+                        <li key={id}>
+                            <Friend nameOfFriend={friendName} avatarURL={avatarURL} roomID={roomID}/>
+                        </li>
+                    ))
+                }
             </div>
             <div className="sign-out items-center-space-between">
                 <button onClick={handleSignOut}>Sign Out</button>
